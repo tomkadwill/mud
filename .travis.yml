@@ -5,3 +5,6 @@ rvm:
 branches:
   only:
     - master
+
+before_script:
+  - psql -c "CREATE USER tomkadwill;" -U postgres
