@@ -5,10 +5,10 @@ base: &base
   username: 'tomkadwill'
   host: 'localhost'
 development:
-  database: 'barlowrobbins_development'
+  database: 'mud_development'
   <<: *base
 test: &test
-  database: 'barlowrobbins_test'
+  database: 'mud_test'
   <<: *base
 cucumber:
   <<: *test
