@@ -7,4 +7,5 @@ branches:
     - master
 
 before_script:
-  - psql -c "CREATE USER tomkadwill;" -U postgres
+  - cp config/database.travis.yml config/database.yml
+  - psql -c 'create database mud_test;' -U postgres
