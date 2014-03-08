@@ -1,5 +1,4 @@
 test:
-  adapter: 'postgresql'
+  adapter: postgresql
   database: mud_test
-  username: root
-  encoding: 'utf8'
+  username: postgres
