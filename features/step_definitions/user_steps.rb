@@ -67,6 +67,10 @@ Given /^I exist as an unconfirmed user$/ do
 end
 
 ### WHEN ###
+When /^I visit the site$/ do
+  visit '/'
+end
+
 When /^I sign in with valid credentials$/ do
   create_visitor
   sign_in

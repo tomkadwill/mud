@@ -1,4 +1,11 @@
-Feature: Control Panel home page
+Feature: Control Panel
+  As a signed in user of the website
+  When I visit the site
+  I should be on the control panel
 
-  Scenario: I want to reach the control panel home page
-    When I POST to /
+  Background:
+    Given I am logged in
+
+  Scenario: User visits the site
+    When I visit the site
+    Then I should be on the control panel
