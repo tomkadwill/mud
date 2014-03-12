@@ -2,9 +2,16 @@ require 'spec_helper'
 
 describe ControlPanelController do
   
-  # TODO: change or remove
-  #it "loads the home page" do
-  #  get 'index'
-  #end
+  before (:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+  end
+
+  it "loads the control panel" do
+  	controller.stub(:user) { user }
+    get :index
+    response.should be_success
+    assigns(:user).should == @user
+  end
 
 end

@@ -9,3 +9,7 @@ Feature: Control Panel
   Scenario: User visits the site
     When I visit the site
     Then I should be on the control panel
+
+  Scenario: User should see user information
+    When I am on the control panel
+    Then I should see user information
