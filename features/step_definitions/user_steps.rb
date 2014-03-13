@@ -129,10 +129,6 @@ When /^I edit my account details$/ do
   click_button "Update"
 end
 
-When /^I look at the list of users$/ do
-  visit '/'
-end
-
 ### THEN ###
 Then /^I should be signed in$/ do
   page.should have_content "Logout"
@@ -184,9 +180,4 @@ end
 
 Then /^I should see an account edited message$/ do
   page.should have_content "You updated your account successfully."
-end
-
-Then /^I should see my name$/ do
-  create_user
-  page.should have_content @user[:email]
 end
