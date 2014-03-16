@@ -7,6 +7,9 @@ gem 'devise'
 gem "figaro"
 gem 'coveralls', require: false
 gem 'rails_12factor', group: :production
+gem 'twitter-bootstrap-rails'
+gem "less-rails"
+gem "therubyracer"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
