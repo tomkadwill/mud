@@ -9,6 +9,10 @@ Then /^I should be on the control panel/ do
   current_path.should == authenticated_root_path
 end
 
+Then /^I should see control panel page title/ do
+  expect(page).to have_title 'Control Panel'
+end
+
 Then /^I should see user information/ do
   find('h3').should have_content('example@example.com')
 end

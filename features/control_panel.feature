@@ -10,6 +10,10 @@ Feature: Control Panel
     When I visit the site
     Then I should be on the control panel
 
+  Scenario: User should see control panel page title
+    When I am on the control panel
+    Then I should see control panel page title
+
   Scenario: User should see user information
     When I am on the control panel
     Then I should see user information
