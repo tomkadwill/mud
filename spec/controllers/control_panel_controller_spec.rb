@@ -12,6 +12,7 @@ describe ControlPanelController do
     get :index
     response.should be_success
     assigns(:user).should == @user
+    assigns(:story).should == 'Welcome to Level 1.'
   end
 
 end

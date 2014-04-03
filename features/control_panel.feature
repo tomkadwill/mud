@@ -13,3 +13,7 @@ Feature: Control Panel
   Scenario: User should see user information
     When I am on the control panel
     Then I should see user information
+
+  Scenario: User should see level one info
+    When I am on the control panel
+    Then I should see level one info
