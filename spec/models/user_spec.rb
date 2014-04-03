@@ -98,5 +98,16 @@ describe User do
     end
 
   end
+  
+  describe "level" do
+    
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+    
+    it "A new user should be on level 1" do
+      @user.level.should eq(1)
+    end
+  end
 
 end
