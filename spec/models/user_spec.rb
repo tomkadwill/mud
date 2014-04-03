@@ -99,23 +99,16 @@ describe User do
 
   end
   
-  describe "level" do
+  describe "assign_first_level" do
     
     before(:each) do
       @level = Level.create
-      @user = User.create!(valid_attrs)
+      @stage = Stage.create
     end
-    
-    it "A new user should be on level 1" do
-      @user.level.should eq(@level)
-    end
-  end
-  
-  describe "assign_first_level" do
     
     it "Assigns first level to user" do
       @user = User.create!(valid_attrs)
-      @user.should receive(:update_attribute).with(:level, Level.first)
+      @user.should receive(:update_attributes).with(level: @level, stage: @stage)
       @user.assign_first_level
     end
     
@@ -125,5 +118,29 @@ describe User do
       @user.save
     end
   end
-
+  
+  describe "level" do
+    
+    before(:each) do
+      @level = Level.create
+      @user = User.create!(valid_attrs)
+    end
+    
+    it "Creates a new user assigned to level 1" do
+      @user.level.should eq(@level)
+    end
+  end
+  
+  
+  describe "stage" do
+    
+    before(:each) do
+      @stage = Stage.create
+      @user = User.create!(valid_attrs)
+    end
+    
+    it "Creates a new user assigned to stage 1" do
+      @user.stage.should eq(@stage)
+    end
+  end
 end

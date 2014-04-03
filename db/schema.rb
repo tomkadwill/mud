@@ -11,12 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403110238) do
+ActiveRecord::Schema.define(version: 20140403162149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "levels", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stages", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,10 +40,12 @@ ActiveRecord::Schema.define(version: 20140403110238) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "level_id"
+    t.integer  "stage_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["level_id"], name: "index_users_on_level_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["stage_id"], name: "index_users_on_stage_id", using: :btree
 
 end
