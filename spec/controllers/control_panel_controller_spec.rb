@@ -3,7 +3,8 @@ require 'spec_helper'
 describe ControlPanelController do
   
   before (:each) do
-    @user = FactoryGirl.create(:user)
+    @stage = FactoryGirl.create(:stage)
+    @user = FactoryGirl.create(:user, stage: @stage)
     sign_in @user
   end
 
@@ -12,7 +13,7 @@ describe ControlPanelController do
     get :index
     response.should be_success
     assigns(:user).should == @user
-    assigns(:story).should == 'Welcome to Level 1.'
+    assigns(:story).should == @stage.story
   end
 
 end

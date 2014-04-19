@@ -14,4 +14,12 @@ class User < ActiveRecord::Base
   def assign_first_level
     update_attributes(level: Level.first, stage: Stage.first)
   end
+
+  def story
+    if @stage = self.stage
+      @stage.story
+    else
+      'Your journey is yet to unfold'
+    end
+  end
 end

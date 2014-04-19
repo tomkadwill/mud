@@ -16,7 +16,3 @@ end
 Then /^I should see user information/ do
   find('h3').should have_content('example@example.com')
 end
-
-Then /^I should see level one info/ do
-  find('div.content').should have_content('Welcome to Level 1.')
-end
