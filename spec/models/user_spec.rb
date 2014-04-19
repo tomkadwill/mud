@@ -2,11 +2,15 @@ require 'spec_helper'
 
 describe User do
   
+  let(:level) { Level.new }
+  let(:stage) { Stage.new }
   let(:valid_attrs) {
     {
       :email => "user@example.com",
       :password => "changeme",
-      :password_confirmation => "changeme" 
+      :password_confirmation => "changeme",
+      :stage => stage,
+      :level => level
     }  
   }
 
@@ -50,16 +54,14 @@ describe User do
 
   describe "passwords" do
 
-    before(:each) do
-      @user = User.new(valid_attrs)
-    end
+    let(:user) { User.new(valid_attrs) }
 
     it "should have a password attribute" do
-      @user.should respond_to(:password)
+      user.should respond_to(:password)
     end
 
     it "should have a password confirmation attribute" do
-      @user.should respond_to(:password_confirmation)
+      user.should respond_to(:password_confirmation)
     end
   end
 
@@ -85,62 +87,58 @@ describe User do
 
   describe "password encryption" do
 
-    before(:each) do
-      @user = User.create!(valid_attrs)
-    end
+    let(:user) { User.create!(valid_attrs) }
 
     it "should have an encrypted password attribute" do
-      @user.should respond_to(:encrypted_password)
+      user.should respond_to(:encrypted_password)
     end
 
     it "should set the encrypted password attribute" do
-      @user.encrypted_password.should_not be_blank
+      user.encrypted_password.should_not be_blank
     end
 
   end
   
   describe "assign_first_level" do
     
-    before(:each) do
-      @level = Level.create
-      @stage = Stage.create
-    end
-    
+    let(:user) { User.create!(valid_attrs) }
+
     it "Assigns first level to user" do
-      @user = User.create!(valid_attrs)
-      @user.should receive(:update_attributes).with(level: @level, stage: @stage)
-      @user.assign_first_level
+      user.should receive(:update_attributes).with(level: level, stage: stage)
+      user.assign_first_level
     end
     
     it "should be called on create" do
-      @user = User.new(valid_attrs)
-      @user.should receive(:assign_first_level)
-      @user.save
+      user = User.new(valid_attrs)
+      user.should receive(:assign_first_level)
+      user.save
     end
   end
   
   describe "level" do
     
-    before(:each) do
-      @level = Level.create
-      @user = User.create!(valid_attrs)
-    end
+    let(:user) { User.create!(valid_attrs) }
     
     it "Creates a new user assigned to level 1" do
-      @user.level.should eq(@level)
+      user.level.should eq(level)
     end
   end
   
-  
   describe "stage" do
     
-    before(:each) do
-      @stage = Stage.create
-      @user = User.create!(valid_attrs)
-    end
+    let(:user) { User.create!(valid_attrs) }
     
     it "Creates a new user assigned to stage 1" do
-      @user.stage.should eq(@stage)
+      user.stage.should eq(stage)
+    end
+  end
+
+  describe "#story" do
+
+    let(:user) { User.create!(valid_attrs) }
+
+    it "Returns the current story" do
+      user.story.should eq(user.stage.story)
     end
   end
 end
