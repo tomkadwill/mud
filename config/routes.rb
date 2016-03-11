@@ -8,5 +8,6 @@ Mud::Application.routes.draw do
   resources :users
 
   root to: "home#index"
+  match ':controller(/:action(/:id(.:format)))'
 
 end
