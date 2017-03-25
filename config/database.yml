@@ -2,7 +2,7 @@ base: &base
   encoding: 'utf8'
   adapter: 'postgresql'
   pool: 5
-  username: 'tomkadwill'
+  username: 'tom'
   host: 'localhost'
 development:
   database: 'mud_development'
