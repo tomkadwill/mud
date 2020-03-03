@@ -7,3 +7,6 @@ MUD
 MUD game written in Ruby to further knowledge of RoR.
 
 You can checkout the game on at [tom-mud.herokuapp.com](http://tom-mud.herokuapp.com/)
+
+Updating README for CommitCheck docs demo
+===
