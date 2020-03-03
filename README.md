@@ -10,3 +10,5 @@ You can checkout the game on at [tom-mud.herokuapp.com](http://tom-mud.herokuapp
 
 Updating README for CommitCheck docs demo
 ===
+
+Add some more description for the demo
